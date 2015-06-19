@@ -16,6 +16,6 @@
     <style name="ThemeActionBar"
            parent="Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@null</item>
-    </style>s
+    </style>
 
 </resources>

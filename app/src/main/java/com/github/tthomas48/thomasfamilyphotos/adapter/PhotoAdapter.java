@@ -25,7 +25,6 @@ import com.github.tthomas48.thomasfamilyphotos.R;
 import com.github.tthomas48.thomasfamilyphotos.library.SmugMugLibraryLoader;
 import com.github.tthomas48.thomasfamilyphotos.model.SmugMugImage;
 import com.squareup.picasso.Callback;
-import com.squareup.picasso.LruCache;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -47,7 +46,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
 		this.context = context;
 		this.libraryLoader = new SmugMugLibraryLoader(context);
 		picasso = new Picasso.Builder(context)
-				.memoryCache(new LruCache(2400000))
 				.build();
 	}
 
@@ -96,7 +94,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
 		public void onClick(View v)
 		{
 
-			if (v.getContext() instanceof Activity == false) {
+			if (v.getContext() instanceof Activity == false)
+			{
 				return;
 			}
 			Activity activity = (Activity) v.getContext();
@@ -109,8 +108,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
 
 			ActivityOptionsCompat options =
 					ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
-							imageView,   // The view which starts the transition
-							transitionName    // The transitionName of the view we’re transitioning to
+							imageView,
+							transitionName
 					);
 			ActivityCompat.startActivity(activity, intent, options.toBundle());
 		}
@@ -138,18 +137,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
 
 			holder.imageLabel.setText(image.getTitle());
 
-			// TODO: this should change resolution based upon size of screen
 			picasso.load(images.get(position).getImageLinks().getLarge())
-					//.error(R.drawable.user_placeholder_error)
-//					.resize(500, 500)
-//					.centerCrop()
 					.into(holder.imageView, new Callback()
 					{
 						@Override
 						public void onSuccess()
 						{
 
-							Palette.generateAsync(((BitmapDrawable)holder.imageView.getDrawable()).getBitmap(),
+							Palette.generateAsync(((BitmapDrawable) holder.imageView.getDrawable()).getBitmap(),
 									new Palette.PaletteAsyncListener()
 									{
 										@Override
@@ -159,8 +154,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
 													palette.getVibrantSwatch();
 											if (vibrant != null)
 											{
-												// If we have a vibrant color
-												// update the title TextView
 												holder.imageLabel.setBackgroundColor(
 														vibrant.getRgb());
 												holder.imageLabel.setTextColor(

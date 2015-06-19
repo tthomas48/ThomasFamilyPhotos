@@ -36,7 +36,8 @@ public class SmugMugImage implements Parcelable
 		this.imageLinks = imageLinks;
 	}
 
-	public SmugMugImage(boolean isGallery, String link, ImageLinks imageLinks, String title, Date exifDate) {
+	public SmugMugImage(boolean isGallery, String link, ImageLinks imageLinks, String title, Date exifDate)
+	{
 		this.isGallery = isGallery;
 		this.link = link;
 		this.imageLinks = imageLinks;

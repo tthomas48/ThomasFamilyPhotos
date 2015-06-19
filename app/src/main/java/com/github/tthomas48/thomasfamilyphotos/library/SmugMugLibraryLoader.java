@@ -59,9 +59,11 @@ public class SmugMugLibraryLoader extends Loader<List<SmugMugImage>>
 		load();
 	}
 
-	private void load() {
+	private void load()
+	{
 
-		new AsyncTask<String, ProgressBar, List<SmugMugImage>>() {
+		new AsyncTask<String, ProgressBar, List<SmugMugImage>>()
+		{
 			@Override
 			protected List<SmugMugImage> doInBackground(String... params)
 			{
@@ -72,7 +74,8 @@ public class SmugMugLibraryLoader extends Loader<List<SmugMugImage>>
 					parser = new FeedParser();
 					images.addAll(parser.parseGallery(new URL(FeedParser.GALLERY_TO_LOAD)));
 					Log.d(TAG, "Done parsing gallery feed.");
-				} catch(Exception e) {
+				} catch (Exception e)
+				{
 					Log.e(TAG, "Unable to load and parse gallery.", e);
 				}
 				return images;

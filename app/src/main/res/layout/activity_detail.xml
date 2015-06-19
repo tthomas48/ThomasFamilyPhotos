@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/detailBackground"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical">
+<LinearLayout
+    android:id="@+id/detailBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageLarge"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="20"
         android:adjustViewBounds="true"
         android:background="?android:attr/selectableItemBackground"
         android:elevation="8dp"
         android:gravity="bottom"
         android:scaleType="fitCenter"
-        android:layout_weight="20"
         android:transitionName="@string/transition_image"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
                   android:layout_height="89dp"
-                  android:elevation="10dp"
                   android:layout_weight="1"
+                  android:elevation="10dp"
                   android:orientation="vertical">
 
         <TextView
@@ -48,10 +49,10 @@
             android:ellipsize="end"
             android:gravity="left"
             android:maxLines="1"
+            android:paddingBottom="8dp"
             android:paddingLeft="46dp"
             android:paddingRight="46dp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             android:text="Test Test Test!"
             android:textColor="#000"
             android:textSize="10dp"

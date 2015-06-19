@@ -27,17 +27,15 @@ public class MainActivity extends Activity
 
 		recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-		//recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-		//recyclerView.addItemDecoration(new MarginDecoration(this));
-		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
 		{
 			recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-		} else {
+		} else
+		{
 			recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 		}
 		recyclerView.setHasFixedSize(true);
 
-		 //specify an adapter (see also next example)
 		adapter = new PhotoAdapter(this);
 		getLoaderManager().initLoader(0, null, (LoaderManager.LoaderCallbacks<List<SmugMugImage>>) adapter);
 		recyclerView.setAdapter(adapter);
