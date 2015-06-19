@@ -1,43 +1,46 @@
 package com.github.tthomas48.thomasfamilyphotos;
 
 import android.app.Activity;
+import android.app.LoaderManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+import com.github.tthomas48.thomasfamilyphotos.adapter.PhotoAdapter;
+import com.github.tthomas48.thomasfamilyphotos.model.SmugMugImage;
+
+import java.util.List;
 
 
 public class MainActivity extends Activity
 {
+	private RecyclerView recyclerView;
+	private RecyclerView.Adapter adapter;
+	private RecyclerView.LayoutManager layoutManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return true;
-	}
+		recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings)
+		//recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+		//recyclerView.addItemDecoration(new MarginDecoration(this));
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
 		{
-			return true;
+			recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+		} else {
+			recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 		}
+		recyclerView.setHasFixedSize(true);
 
-		return super.onOptionsItemSelected(item);
+		 //specify an adapter (see also next example)
+		adapter = new PhotoAdapter(this);
+		getLoaderManager().initLoader(0, null, (LoaderManager.LoaderCallbacks<List<SmugMugImage>>) adapter);
+		recyclerView.setAdapter(adapter);
+
 	}
 }

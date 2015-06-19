@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Thomas Family Photos</string>
+    <string name="app_name">Thomas Photos</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="detail_title">Image Details</string>
+    <string name="transition_image">Transition Image</string>
 </resources>
